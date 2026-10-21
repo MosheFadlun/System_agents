@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "nRF54L15")(type "KiCad")(uri "${KIPRJMOD}/lib/nRF54L15.kicad_sym")(options "")(descr "sponge-tag custom symbols"))
+)

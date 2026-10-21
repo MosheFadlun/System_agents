@@ -1,0 +1,27 @@
+# Private boards stay local (only the agent kit and the sponge-tag example are published)
+boards/*
+!boards/sponge-tag/
+!boards/.gitkeep
+
+# Generated / tool output
+*.log
+*.erc
+erc.json
+drc.json
+*_sklib.py
+*.kicad_prl
+*-backups/
+fp-info-cache
+__pycache__/
+*.pyc
+build/
+
+# Local tools / downloads
+tools/bin/*.jar
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/settings.local.json

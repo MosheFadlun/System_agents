@@ -1,0 +1,5 @@
+{
+  "psu":   {"host": "192.168.1.50", "port": 5025, "vendor": "siglent", "kind": "psu",   "max_voltage": 5.5, "max_current": 0.5},
+  "dmm":   {"host": "192.168.1.51", "port": 5025, "vendor": "siglent", "kind": "dmm"},
+  "scope": {"host": "192.168.1.52", "port": 5025, "vendor": "siglent", "kind": "scope"}
+}
