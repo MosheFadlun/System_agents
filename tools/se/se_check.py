@@ -1,4 +1,4 @@
-"""INCOSE traceability + requirement-quality check for one board.
+"""Traceability + requirement-quality check for one board.
 
     python tools/se/se_check.py boards/<name>            # check, exit 1 on errors
     python tools/se/se_check.py boards/<name> --matrix   # also write 00-management/trace-matrix.md
@@ -11,7 +11,7 @@ Chain checked (files are optional until their process has run):
   08-verification/vcrm.csv                 SyR -> verification (I/A/D/T)
   09-validation/validation.csv             StR -> validation scenario
 
-Requirement-quality rules are a subset of the INCOSE Guide to Writing Requirements (GtWR):
+Requirement-quality rules are a subset of common requirement-writing rules:
 singular "shall", no vague terms, no escape clauses, no open-ended lists, no combinators
 (and/or), no superlatives, positive statements, measurable performance (number + unit), no TBD.
 """
@@ -64,30 +64,30 @@ def lint(rid, text, rtype, rep):
     t = text.lower()
     n_shall = len(re.findall(r"\bshall\b", t))
     if n_shall == 0:
-        rep.err(f"{rid}: no 'shall' (GtWR: requirements use 'shall')")
+        rep.err(f"{rid}: no 'shall' (requirements use 'shall')")
     elif n_shall > 1:
-        rep.err(f"{rid}: {n_shall}x 'shall', split it (GtWR singular)")
+        rep.err(f"{rid}: {n_shall}x 'shall', split it (singular)")
     t_vague = re.sub(r"\bat (most|least)\b", "", t)  # "at most 3 uA" is a precise bound
     for w in VAGUE:
         if has_word(t_vague, w):
-            rep.warn(f"{rid}: vague term '{w}' (GtWR unambiguous: give a value)")
+            rep.warn(f"{rid}: vague term '{w}' (unambiguous: give a value)")
     for w in ESCAPE:
         if w in t:
-            rep.err(f"{rid}: escape clause '{w}' (GtWR: not verifiable)")
+            rep.err(f"{rid}: escape clause '{w}' (not verifiable)")
     for w in OPEN_ENDED:
         if has_word(t, w):
-            rep.err(f"{rid}: open-ended '{w}' (GtWR complete: list every item)")
+            rep.err(f"{rid}: open-ended '{w}' (complete: list every item)")
     if "and/or" in t:
-        rep.err(f"{rid}: 'and/or' (GtWR: ambiguous combinator)")
+        rep.err(f"{rid}: 'and/or' (ambiguous combinator)")
     for w in SUPERLATIVE:
         if has_word(t, w):
-            rep.warn(f"{rid}: superlative '{w}' (GtWR: state the limit)")
+            rep.warn(f"{rid}: superlative '{w}' (state the limit)")
     if re.search(r"\bshall not\b", t):
         rep.warn(f"{rid}: negative requirement ('shall not'), prefer a positive, verifiable form if one exists")
     if re.search(r"\btb[dcr]\b", t):
         rep.warn(f"{rid}: contains TBD/TBC/TBR (track until closed)")
     if rtype.lower().startswith("perf") and not UNIT_RE.search(text):
-        rep.err(f"{rid}: performance requirement without a number + unit (GtWR measurable)")
+        rep.err(f"{rid}: performance requirement without a number + unit (measurable)")
 
 
 def check_ids(rows, prefix, name, rep):
@@ -147,7 +147,7 @@ def main(board, write_matrix=False):
             if not m or not set(split_ids(m.replace("/", " "))) <= METHODS:
                 rep.err(f"{r['id']}: verification_method '{m}' must be I, A, D or T")
             if not r.get("rationale"):
-                rep.warn(f"{r['id']}: no rationale (GtWR: record why)")
+                rep.warn(f"{r['id']}: no rationale (record why)")
         for s in sorted(s_ids - covered):
             rep.err(f"{s}: stakeholder requirement not traced to any system requirement")
 

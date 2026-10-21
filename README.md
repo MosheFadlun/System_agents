@@ -1,6 +1,6 @@
-# System_agents: INCOSE hardware design agents for Claude Code
+# System_agents: systems-engineering hardware design agents for Claude Code
 
-A Claude Code workspace that runs a team of agents, **one per INCOSE / ISO/IEC/IEEE 15288 process**,
+A Claude Code workspace that runs a team of agents, **one per systems-engineering (ISO/IEC/IEEE 15288) process**,
 to take an electronics board from stakeholder needs to a validated prototype along the V-model:
 stakeholder needs → system requirements → architecture and analysis → parts, schematic, layout,
 firmware → design reviews → fab → integration (bring-up) → verification → validation.
@@ -15,7 +15,7 @@ The agents do the work and write their reasoning into files.
 | `.claude/agents/` | 14 agents: `se-stakeholder`, `se-requirements`, `se-architecture`, `se-analysis`, `se-manager`, `hw-parts`, `hw-schematic`, `hw-schematic-review`, `hw-layout`, `hw-layout-review`, `hw-firmware`, `se-integration`, `se-verification`, `se-validation` |
 | `.claude/commands/` | `/hw-new`, `/hw-next`, `/hw-review`, `/hw-status` |
 | `templates/board/` | Folder template per board (00-management … 09-validation) |
-| `tools/se/se_check.py` | Traceability (N → StR → SyR → element → VCRM/validation) and requirement-quality lint (INCOSE Guide to Writing Requirements subset) |
+| `tools/se/se_check.py` | Traceability (N → StR → SyR → element → VCRM/validation) and requirement-quality lint (requirement-writing rules) |
 | `tools/kicad/` | SKiDL/KiCad helpers: netlist rule check, ERC/DRC/fab export wrappers, symbol generator |
 | `tools/lab/` | SCPI over LAN for PSU/DMM/scope, with a safe PSU wrapper (hard limits, overcurrent trip, logging) |
 | `tools/fw/ncs.sh` | Run nRF Connect SDK tools without nrfutil toolchain-manager |

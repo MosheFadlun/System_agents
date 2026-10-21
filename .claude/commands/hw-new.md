@@ -1,5 +1,5 @@
 ---
-description: Start a new board (INCOSE stakeholder needs) - copy the template and run the se-stakeholder agent
+description: Start a new board (stakeholder needs) - copy the template and run the se-stakeholder agent
 argument-hint: <board-name>
 ---
 Create a new board named `$ARGUMENTS`. You are the orchestrator: do not write stakeholder content yourself.

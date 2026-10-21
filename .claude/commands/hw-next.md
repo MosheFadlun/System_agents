@@ -1,5 +1,5 @@
 ---
-description: Run the next INCOSE process for a board by dispatching its agent (respects the technical-review gates)
+description: Run the next systems-engineering process for a board by dispatching its agent (respects the technical-review gates)
 argument-hint: <board-name> [process]
 ---
 Board: `boards/<first word of $ARGUMENTS>/`. An optional second word names the process to run.

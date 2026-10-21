@@ -1,6 +1,6 @@
-# Hardware Design Agents (INCOSE systems engineering)
+# Hardware Design Agents (systems engineering)
 
-This workspace runs a team of Claude Code agents, **one agent per INCOSE / ISO/IEC/IEEE 15288
+This workspace runs a team of Claude Code agents, **one agent per systems-engineering (ISO/IEC/IEEE 15288)
 process**, that take a board from stakeholder needs to a validated prototype along the V-model.
 
 **The human owns judgment**: stakeholder needs, decisions, and approval of every technical review.
@@ -23,7 +23,7 @@ outputs, and updates STATUS.md. Use `/hw-new`, `/hw-next`, `/hw-review`, `/hw-st
  Technical management across all phases: se-manager (plan, risks, decisions, baselines, TPMs, reviews)
 ```
 
-| INCOSE process (15288 §) | Agent | Output folder | Ends at |
+| Process (15288 §) | Agent | Output folder | Ends at |
 |---|---|---|---|
 | Stakeholder needs & requirements (6.4.2) | `se-stakeholder` | 01-stakeholder/ | SRR |
 | System requirements (6.4.3) | `se-requirements` | 02-requirements/ | SRR |
@@ -52,7 +52,7 @@ Rules:
 - Never start a phase whose review is not `[x] Approved by <name> <date>` in STATUS.md. Only the human ticks it.
 - **Traceability**: need N → StR → SyR → element E (allocation) → design item → verification
   (VCRM) / validation. `python tools/se/se_check.py boards/<name>` must pass before each review.
-- **Requirements** follow the INCOSE Guide to Writing Requirements (one "shall", measurable,
+- **Requirements** follow good requirement-writing practice (one "shall", measurable,
   unambiguous, no escape clauses). The checker lints them.
 - **Independence**: a reviewer, verifier or validator never checks work it produced.
 - Every number in the design traces to a datasheet page or an analysis: `(DS: <part> p.<n>)` or `(A-07)`.
@@ -74,7 +74,7 @@ boards/<name>/
   07-integration/      plan.md, log.md, captures/
   08-verification/     vcrm.csv, procedures/, results/, design-reviews/
   09-validation/       validation.csv, plan.md, results
-templates/board/            current template (INCOSE)
+templates/board/            current template (systems-engineering layout)
 templates/board-legacy-v1/  old 00-goals/01-spec... layout (the sponge-tag example still uses it)
 tools/                      se/ (trace check), kicad/, lab/, fw/
 .claude/agents/             one agent per process
