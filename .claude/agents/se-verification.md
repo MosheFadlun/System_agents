@@ -13,6 +13,9 @@ Planning (before CDR):
   fixtures), steps, the measured quantity, pass criterion copied from the SyR, how many samples.
 - Analysis items point to the `04-analysis/A-NN` file; inspection items to the drawing/BOM/photo.
 
+Also plan which verification runs on which build (EVT/DVT/PVT, with npi) and include the
+standards test campaign from med-standards (test lab, samples) when the product is medical.
+
 Execution (after TRR approved):
 - Run each procedure (lab tools as in se-integration, same safety rules), save raw data and
   captures in `08-verification/results/`, set status pass/fail with an evidence path.

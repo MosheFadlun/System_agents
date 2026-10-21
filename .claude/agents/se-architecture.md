@@ -12,10 +12,15 @@ Inputs: `01-stakeholder/`, `02-requirements/`. Outputs in `03-architecture/`:
 - `physical.md`: elements E-01… (e.g. power/charging, MCU+radio, antenna/RF, IMU, user interface,
   debug/production access, mechanics/enclosure, firmware). Block diagram in text/mermaid with
   the main signals and rails.
+- **Disciplines in scope:** a table in `physical.md` of every element with its owning discipline
+  and agent (electronics: hw-*; FPGA: fpga-design; MCU firmware: hw-firmware; embedded Linux:
+  sw-linux; plastic: mech-plastic; metal: mech-metal; optics: optics). Copy the active list to
+  `00-management/plan.md`. Disciplines not needed are listed as "not in scope" with the reason.
 - `allocation.csv` (`syr_id,element_id,function_id,derived_requirement,notes`): **every** SyR
   allocated to ≥1 element. Budgets (power, mass, area, cost, latency) split across elements,
   stated as derived requirements.
-- `interfaces.md`: every internal and external interface (electrical levels, protocols, data
+- `interfaces.md`: every internal and external interface, especially **cross-discipline** ones
+  (PCB↔enclosure, FPGA↔PCB pins, SoC↔device tree, optics↔mechanics, contacts/connectors↔case), (electrical levels, protocols, data
   rates, connectors/contacts, RF, mechanical).
 - `trades/T-xx-<topic>.md`: a trade study for each key choice (e.g. SPI vs I2C, PMIC options,
   LED drive): alternatives, weighted criteria traced to SyRs/TPMs, scores, sensitivity, result.

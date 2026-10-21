@@ -24,6 +24,10 @@ Rules:
   TBD, and put the question in your return message.
 - Follow good requirement-writing practice: one "shall" per requirement, no vague words
   (low, fast, small), no "etc." or "and/or", measurable with units.
+- Identify the likely disciplines (electronics, FPGA, MCU firmware, embedded Linux, plastic and metal
+  mechanics, optics) and whether the product is or may be a **medical device** (any diagnosis,
+  monitoring, treatment or health claim). Report both; the orchestrator then runs med-regulatory
+  and clinical early, and se-architecture confirms the discipline list.
 - Record constraints from the stakeholders (chosen parts, cost, schedule) as type `constraint`.
 - Run `python tools/se/se_check.py <board>` and fix every error you caused.
 

@@ -19,9 +19,13 @@ Process:
 3. Each SyR: one "shall", measurable (number + unit + condition), verification method
    I (inspection), A (analysis), D (demonstration) or T (test), verification level
    (system/subsystem/component), rationale (why this value, with its source).
-4. Pick 4–8 TPMs (e.g. standby current, session energy, BOM cost, board area, range) with a
+4. Merge requirement proposals from other processes, each with its source: med-standards
+   (`10-regulatory/standards/derived-requirements.csv`, risk controls), med-regulatory (labeling,
+   UDI, PMS), clinical (clinical performance), npi/mfg-engineering/dfm (production, test, cost).
+   You decide the wording; the source stays in the rationale.
+5. Pick 4–8 TPMs (e.g. standby current, session energy, BOM cost, board area, range) with a
    threshold and a current estimate in `tpm.md`.
-5. Run `python tools/se/se_check.py <board>`: 0 errors before you return. Fix vague terms.
+6. Run `python tools/se/se_check.py <board>`: 0 errors before you return. Fix vague terms.
 
 Return: counts by type, the TPMs, every TBD with the question that closes it, and any StR that
 cannot be met as written (conflicts, e.g. battery life vs. sample rate) with the numbers.

@@ -20,7 +20,15 @@ Duties:
 5. **Configuration management:** when a review is approved, record the baseline in
    `baselines.md`: the list of controlled files with their SHA-256 (`sha256sum`). After a
    baseline, any change to a controlled file needs a change record (ECR line in decisions.md).
-6. **Technical reviews:** to prepare a review, write `00-management/reviews/<REVIEW>.md`:
+6. **Disciplines and builds:** keep the active-discipline list in `plan.md` (from se-architecture);
+   every review covers every active discipline. Align reviews with npi builds: CDR before EVT
+   orders, design freeze before DVT, design transfer before PVT/production.
+7. **Medical devices (if in scope):** maintain the design-controls view: design inputs
+   (02-requirements), outputs (05-design), reviews (00-management/reviews), verification (08),
+   validation (09), transfer (12-npi/transfer.md), risk management file and usability file
+   (10-regulatory/standards), and the DHF / technical-file index from med-regulatory. Every
+   review record lists independent reviewers and attendees as the regulation expects.
+8. **Technical reviews:** to prepare a review, write `00-management/reviews/<REVIEW>.md`:
    entry criteria (checklist below), evidence for each item (file + line), the output of
    `python tools/se/se_check.py boards/<name> --matrix`, open items, risks above 12, and a
    recommendation (ready / not ready). The human approves it in STATUS.md, not you.
@@ -28,10 +36,13 @@ Duties:
 Entry criteria:
 - **SRR:** ConOps with scenarios and MOEs; every need has an StR; every StR traced to ≥1 SyR;
   every SyR has a verification method (I/A/D/T) and rationale; se_check 0 errors; TBDs listed.
-- **PDR:** functional + physical architecture; every SyR allocated (allocation.csv); ICD drafted;
+- **PDR:** active disciplines set; regulatory class and pathway, standards matrix and initial risk
+  analysis (if medical); functional + physical architecture; every SyR allocated (allocation.csv); ICD drafted;
   trade studies for key choices; analyses support all performance SyRs; preliminary BOM with
   stock check; risk register reviewed.
-- **CDR:** schematic + layout + firmware design complete; design reviews closed (all blockers and
+- **CDR:** design complete for every active discipline (electronics, FPGA, firmware, Linux,
+  mechanics, optics) with its design review (design-review / hw-*-review) closed; DFM findings
+  closed or accepted; risk controls implemented; npi EVT build plan ready; design reviews closed (all blockers and
   majors fixed or waived with a reason); ERC/DRC clean; VCRM complete with procedures planned;
   fab package ready.
 - **TRR:** boards integrated (bring-up log); verification procedures written; instruments listed;
